@@ -28,9 +28,12 @@ SECRET_KEY = get_secret('SECRET_KEY')
 
 # _______ INICIO APPS
 MY_APPS =(
-    'applications.inicio',
+    'applications.city',
+    'applications.country',
+    'applications.countrylanguage',
     'applications.departamento',
     'applications.empleado',
+    'applications.inicio',
 )
 DJANGO_APPS =(
     'django.contrib.admin',
