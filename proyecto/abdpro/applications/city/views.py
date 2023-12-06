@@ -24,11 +24,6 @@ from rest_framework.generics import (
 from .serializer import (
     CitySerializer
 )
-# ------------------------------------------------------------------
-# VISTAS A USAR
-# ------------------------------------------------------------------
-
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # ------------------------------------------------------------------
 # MODELOS
@@ -36,42 +31,41 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import City
 
 # ------------------------------------------------------------------
-# FORMULARIOS
-# ------------------------------------------------------------------
-
-from .forms import NewCityForm
-
-# ------------------------------------------------------------------
 # CREAR City
 # ------------------------------------------------------------------
 
-class NuevoCity(CreateView):
-    # Modelo usado para la vista
-    model = City
-    # Template usado en la vista
-    template_name = 'City/NuevoCity.html'
-    # Contexto usado para la impresión en el html
-    context_object_name = 'NewCity'
-    # formulario usado en la vista
-    form_class = NewCityForm
-    # Dirección a la que va cuando se ejecuta el submit
-    success_url = reverse_lazy('inicio_app:home')
-
-    def form_valid(self, form):
-        # Guardando los datos del formulario
-        city = form.save(commit=False)
-        city.save()
-        # Return del formulario completado
-        return super(NuevoCity, self).form_valid(form)
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-#class TrabajoAPISerializer(CreateAPIView):
-#   serializer_class = TrabajosSerializer
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-class CityAPISerializer(CreateAPIView):
+class CreateCity(CreateAPIView):
     serializer_class = CitySerializer
+    
+# ------------------------------------------------------------------
+# LISTAR CIUDADES
+# ------------------------------------------------------------------
+    
+class ListCity(ListAPIView):
+    serializer_class = CitySerializer
+    def get_queryset(self):
+        return City.objects.all()
+# ------------------------------------------------------------------
+# LISTAR CIUDAD
+# ------------------------------------------------------------------
+    
+class CityDetails(RetrieveAPIView):
+    serializer_class = CitySerializer
+    def get_queryset(self):
+        return City.objects.all()
+# ------------------------------------------------------------------
+# ELIMINO CIUDAD
+# ------------------------------------------------------------------
+    
+class DeleteCity(DestroyAPIView):
+    serializer_class = CitySerializer
+    def get_queryset(self):
+        return City.objects.all()
+# ------------------------------------------------------------------
+# ACTUALIZAR CIUDAD
+# ------------------------------------------------------------------
+    
+class UpdateCity(UpdateAPIView):
+    serializer_class = CitySerializer
+    def get_queryset(self):
+        return City.objects.all()

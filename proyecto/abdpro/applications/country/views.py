@@ -24,11 +24,6 @@ from rest_framework.generics import (
 from .serializer import (
     CountrySerializer
 )
-# ------------------------------------------------------------------
-# VISTAS A USAR
-# ------------------------------------------------------------------
-
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # ------------------------------------------------------------------
 # MODELOS
@@ -36,43 +31,41 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Country
 
 # ------------------------------------------------------------------
-# FORMULARIOS
+# CREAR Country
 # ------------------------------------------------------------------
 
-from .forms import NewCountryForm
-
-# ------------------------------------------------------------------
-# CREAR City
-# ------------------------------------------------------------------
-
-class NuevoCountry(CreateView):
-    # Modelo usado para la vista
-    model = Country
-    # Template usado en la vista
-    template_name = 'Country/NuevoCountry.html'
-    # Contexto usado para la impresión en el html
-    context_object_name = 'NewCountry'
-    # formulario usado en la vista
-    form_class = NewCountryForm
-    # Dirección a la que va cuando se ejecuta el submit
-    success_url = reverse_lazy('inicio_app:home')
-
-    def form_valid(self, form):
-        # Guardando los datos del formulario
-        city = form.save(commit=False)
-        city.save()
-        # Return del formulario completado
-        return super(NuevoCountry, self).form_valid(form)
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-#class TrabajoAPISerializer(CreateAPIView):
-#   serializer_class = TrabajosSerializer
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-class CountryAPISerializer(CreateAPIView):
+class CreateCountry(CreateAPIView):
     serializer_class = CountrySerializer
-
+    
+# ------------------------------------------------------------------
+# LISTAR PAISES
+# ------------------------------------------------------------------
+    
+class ListCountry(ListAPIView):
+    serializer_class = CountrySerializer
+    def get_queryset(self):
+        return Country.objects.all()
+# ------------------------------------------------------------------
+# LISTAR CIUDAD
+# ------------------------------------------------------------------
+    
+class CountryDetails(RetrieveAPIView):
+    serializer_class = CountrySerializer
+    def get_queryset(self):
+        return Country.objects.all()
+# ------------------------------------------------------------------
+# ELIMINO CIUDAD
+# ------------------------------------------------------------------
+    
+class DeleteCountry(DestroyAPIView):
+    serializer_class = CountrySerializer
+    def get_queryset(self):
+        return Country.objects.all()
+# ------------------------------------------------------------------
+# ACTUALIZAR CIUDAD
+# ------------------------------------------------------------------
+    
+class UpdateCountry(UpdateAPIView):
+    serializer_class = CountrySerializer
+    def get_queryset(self):
+        return Country.objects.all()

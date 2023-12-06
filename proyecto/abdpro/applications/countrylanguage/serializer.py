@@ -5,7 +5,7 @@ from .models import(
     CountryLanguage
 )
 
-class CountryLanguage(serializers.ModelSerializer):
+class CountryLanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = CountryLanguage
         fields = ('__all__')

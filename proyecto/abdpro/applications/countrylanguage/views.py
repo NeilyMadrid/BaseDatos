@@ -22,14 +22,8 @@ from rest_framework.generics import (
 )
 
 from .serializer import (
-    
     CountryLanguageSerializer
 )
-# ------------------------------------------------------------------
-# VISTAS A USAR
-# ------------------------------------------------------------------
-
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # ------------------------------------------------------------------
 # MODELOS
@@ -37,42 +31,41 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import CountryLanguage
 
 # ------------------------------------------------------------------
-# FORMULARIOS
+# CREAR ContryLanguage
 # ------------------------------------------------------------------
 
-from .forms import NewCountryLanguageForm
-
-# ------------------------------------------------------------------
-# CREAR City
-# ------------------------------------------------------------------
-
-class NuevoCountryLanguage(CreateView):
-    # Modelo usado para la vista
-    model = CountryLanguage
-    # Template usado en la vista
-    template_name = 'CountryLanguage/NuevoCountryLanguage.html'
-    # Contexto usado para la impresión en el html
-    context_object_name = 'NewCountryLanguage'
-    # formulario usado en la vista
-    form_class = NewCountryLanguageForm
-    # Dirección a la que va cuando se ejecuta el submit
-    success_url = reverse_lazy('inicio_app:home')
-
-    def form_valid(self, form):
-        # Guardando los datos del formulario
-        countrylanguage = form.save(commit=False)
-        countrylanguage.save()
-        # Return del formulario completado
-        return super(NuevoCountryLanguage, self).form_valid(form)
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-#class TrabajoAPISerializer(CreateAPIView):
-#   serializer_class = TrabajosSerializer
-
-# ------------------------------------------------------------------
-# API CREAR UN TRABAJO
-# ------------------------------------------------------------------
-class CountryLanguageAPISerializer(CreateAPIView):
+class CreateCountryLanguage(CreateAPIView):
     serializer_class = CountryLanguageSerializer
+    
+# ------------------------------------------------------------------
+# LISTAR CountryLanguage
+# ------------------------------------------------------------------
+    
+class ListCountryLanguage(ListAPIView):
+    serializer_class = CountryLanguageSerializer
+    def get_queryset(self):
+        return CountryLanguage.objects.all()
+# ------------------------------------------------------------------
+# LISTAR Un lenguaje
+# ------------------------------------------------------------------
+    
+class CountryLanguageDetails(RetrieveAPIView):
+    serializer_class = CountryLanguageSerializer
+    def get_queryset(self):
+        return CountryLanguage.objects.all()
+# ------------------------------------------------------------------
+# ELIMINO CountryLanguage
+# ------------------------------------------------------------------
+    
+class DeleteCountryLanguage(DestroyAPIView):
+    serializer_class = CountryLanguageSerializer
+    def get_queryset(self):
+        return CountryLanguage.objects.all()
+# ------------------------------------------------------------------
+# ACTUALIZAR Countrylanguage
+# ------------------------------------------------------------------
+    
+class UpdateCountryLanguage(UpdateAPIView):
+    serializer_class = CountryLanguageSerializer
+    def get_queryset(self):
+        return CountryLanguage.objects.all()

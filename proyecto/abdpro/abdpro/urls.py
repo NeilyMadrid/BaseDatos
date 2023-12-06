@@ -8,4 +8,7 @@ urlpatterns = [
     re_path('', include('applications.inicio.urls')),
     re_path('', include('applications.empleado.urls')),
     re_path('', include('applications.departamento.urls')),
+    re_path('', include('applications.city.urls')),
+    re_path('', include('applications.country.urls')),
+    re_path('', include('applications.countrylanguage.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

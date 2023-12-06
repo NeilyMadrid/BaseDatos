@@ -20,23 +20,23 @@ class NewCityForm(forms.ModelForm):
         model = City
         # Campos usados en el formulario
         fields = (
-            'Name',
-            'District',
-            'Population',
-            'Monuments',
-            'Climate',
+            'nombreCity',
+            'district',
+            'population',
+            'monuments',
+            'climate',
         )
         # Labels de los campos del formulario
         labels = {
-            'Name': 'Name of city',
-            'District': 'District',
-            'Population': 'population',
-            'Monuments': 'Monuments',
-            'Climate': 'Climate',
+            'nombreCity': 'Name of city',
+            'district': 'District',
+            'population': 'population',
+            'monuments': 'Monuments',
+            'climate': 'Climate',
         }
                 # Espacio para agregar características a los campos
         widgets = {
-            'Name': forms.TextInput(
+            'nombreCity': forms.TextInput(
                 attrs={'class': 'ContainerCityFormSelect'}
             ),
         }
