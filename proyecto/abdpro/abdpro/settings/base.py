@@ -46,6 +46,7 @@ DJANGO_APPS =(
 THIRD_APPS =(
     'compressor',
     'rest_framework',
+    'corsheaders',
 )
 INSTALLED_APPS = MY_APPS + DJANGO_APPS + THIRD_APPS
 # _______ FIN APPS
@@ -59,8 +60,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 #_________ FIN MIDDLEWARE
+#_________ INICIO CORS_ALLOWED_ORIGINS
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+#_________ FIN CORS_ALLOWED_ORIGINS
+
+
+
 
 #_________ INICIO ROOT_URLCONF
 

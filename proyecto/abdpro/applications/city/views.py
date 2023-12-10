@@ -42,30 +42,31 @@ class CreateCity(CreateAPIView):
 # ------------------------------------------------------------------
     
 class ListCity(ListAPIView):
-    serializer_class = CitySerializer
     def get_queryset(self):
         return City.objects.all()
+    serializer_class = CitySerializer
 # ------------------------------------------------------------------
 # LISTAR CIUDAD
 # ------------------------------------------------------------------
     
 class CityDetails(RetrieveAPIView):
-    serializer_class = CitySerializer
     def get_queryset(self):
         return City.objects.all()
+    serializer_class = CitySerializer
+    
 # ------------------------------------------------------------------
 # ELIMINO CIUDAD
 # ------------------------------------------------------------------
     
 class DeleteCity(DestroyAPIView):
-    serializer_class = CitySerializer
     def get_queryset(self):
         return City.objects.all()
+    serializer_class = CitySerializer
 # ------------------------------------------------------------------
 # ACTUALIZAR CIUDAD
 # ------------------------------------------------------------------
     
 class UpdateCity(UpdateAPIView):
-    serializer_class = CitySerializer
     def get_queryset(self):
         return City.objects.all()
+    serializer_class = CitySerializer

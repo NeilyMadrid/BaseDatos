@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from .import views
 
 app_name = "city_app"
 
@@ -24,14 +24,14 @@ path('ListCity/',
 #VER CITY
 # ------------------------------------------------------------------
 
-path('CityDetails/<pk>',
+path('CityDetails/<pk>/',
         views.CityDetails.as_view(),
         name='CityDetails'),
 # ------------------------------------------------------------------
 # ACTUALIZAR CITY
 # ------------------------------------------------------------------
 
-path('UpdateCity/<pk>',
+path('UpdateCity/<pk>/',
         views.UpdateCity.as_view(),
         name='UpdateCity'),
 
@@ -39,7 +39,7 @@ path('UpdateCity/<pk>',
 # ELIMINAR EMPLEADO
 # ------------------------------------------------------------------
 
-path('DeleteCity/<pk>',
+path('DeleteCity/<pk>/',
         views.DeleteCity.as_view(),
         name='DeleteCity'),
 # ------------------------------------------------------------------

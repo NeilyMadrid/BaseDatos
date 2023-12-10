@@ -24,14 +24,14 @@ path('ListCountry/',
 #VER Country
 # ------------------------------------------------------------------
 
-path('CountryDetails/<pk>',
+path('CountryDetails/<pk>/',
         views.CountryDetails.as_view(),
         name='CountryDetails'),
 # ------------------------------------------------------------------
 # ACTUALIZAR Country
 # ------------------------------------------------------------------
 
-path('UpdateCountry/<pk>',
+path('UpdateCountry/<pk>/',
         views.UpdateCountry.as_view(),
         name='UpdateCountry'),
 
@@ -39,7 +39,7 @@ path('UpdateCountry/<pk>',
 # ELIMINAR EMPLEADO
 # ------------------------------------------------------------------
 
-path('DeleteCountry/<pk>',
+path('DeleteCountry/<pk>/',
         views.DeleteCountry.as_view(),
         name='DeleteCountry'),
 # ------------------------------------------------------------------
