@@ -1,12 +1,12 @@
 import React from 'react'
-import EmpleadoLista from '../components/EmpleadoLista'
-import TrabajosLista from '../components/TrabajosLista'
+import MostrarCountry from '../components/MostrarCountry'
+import MostrarCity from '../components/MostrarCity'
 
 const Mostrar = () => {
   return (
     <div>
-      <EmpleadoLista></EmpleadoLista>
-      <TrabajosLista></TrabajosLista>
+      <MostrarCountry></MostrarCountry>
+      <MostrarCity></MostrarCity>
     </div>
   )
 }

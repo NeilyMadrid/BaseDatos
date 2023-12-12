@@ -1,4 +1,3 @@
-import postCountryApi from "../api/getActualizarCountry"
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -49,37 +48,10 @@ const ActualizarCountry = () => {
         
     }
     
-    const handleCountry = (e) =>{
-            e.preventDefault();
-            let id = document.getElementById('id').value
-            let codigoPais = document.getElementById('codigoPais').value
-            let nombrePais = document.getElementById('nombrePais').value
-            let continente = document.getElementById('continente').value
-            let region = document.getElementById('region').value
-            let superficieArea = document.getElementById('superficieArea').value
-            let independencia = document.getElementById('independencia').value
-            let poblacion = document.getElementById('poblacion').value
-            let expectativaVida = document.getElementById('expectativaVida').value
-            let productointernobruto = document.getElementById('productointernobruto').value
-            let productonacionalbruto = document.getElementById('productonacionalbruto').value
-            let nombreLocal = document.getElementById('nombreLocal').value
-            let formaGobierno= document.getElementById('formaGobierno').value
-            let jefeEstado = document.getElementById('jefeEstado').value
-            let capital = document.getElementById('capital').value
-            let segundoCodigo = document.getElementById('segundoCodigo').value
-            let monedaOficial = document.getElementById('monedaOficial').value
-            let fronteras = document.getElementById('fronteras').value
-            let active = document.getElementById('active').value
-
-            const CountryPost = async () => {
-            const response = await postCountryApi(urlBase,id, codigoPais, nombrePais, continente, region, superficieArea, independencia, poblacion,expectativaVida, productointernobruto, productonacionalbruto, nombreLocal,formaGobierno,jefeEstado, capital,segundoCodigo,monedaOficial,fronteras, active);
-        };
-        CountryPost()
-    }
     return(
         <div className="Agregar">
-            <h1 className="AgregarTittle">Actualizar Pais</h1>
-            <form className="AgregarFormulario" onSubmit={handleCountry}>
+            <h1 className="AgregarTittle">Mostrar Pais</h1>
+            <form className="AgregarFormulario" >
             <label htmlFor="countries" className='AgregarFormularioInput'>Seleccione el Pais</label>
                 <select name="countryCode" id="countryCode" onChange={handleCountryOnChange}>
                     {
@@ -108,7 +80,6 @@ const ActualizarCountry = () => {
                 <input type="text" name="fronteras" id="fronteras" className="fronteras AgregarFormularioInput" placeholder="Fronteras"></input>
                 <label htmlFor="active" className='AgregarFormularioInput'> Activo</label>
                 <input type='checkbox' name="active" id="active" className="active AgregarFormularioInput" placeholder="active"></input>
-                <button className="AgregarFormularioBtn" type="submit" name="country">Actualizar</button>
             </form>
         </div>
     )

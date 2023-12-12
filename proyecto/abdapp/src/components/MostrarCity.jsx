@@ -1,4 +1,3 @@
-import postCityApi from "../api/getActualizarCity"
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -20,7 +19,7 @@ const ActualizarCity = () => {
     const handleCityOnChange = (e) =>{
         
         let id = document.getElementById('cityCode').value;
-        console.log('element.updateCiudadID ' + id);
+        
         cities.forEach(function (element) {
             console.log(element);
             if (element.id == id) {
@@ -35,28 +34,11 @@ const ActualizarCity = () => {
         });
 
     }
-        
-
-    const handleCity = (e) =>{
-            e.preventDefault();
-            let id = document.getElementById('updateCiudadID').value
-            let countryCode = document.getElementById('countryCode1').value
-            let nombreCity = document.getElementById('nombreCity').value
-            let monuments = document.getElementById('monuments').value
-            let population = document.getElementById('population').value
-            let climate = document.getElementById('climate').value
-            let district = document.getElementById('district').value
-            let active = document.getElementById('active').value
-
-            const CityPost = async () => {
-            const response = await postCityApi(urlBase, id, countryCode, nombreCity,monuments,population,climate, district, active);
-        };
-        CityPost()
-    }
+      
     return(
         <div className="Agregar">
-            <h1 className="AgregarTittle">Actualizar Ciudad</h1>
-            <form className="AgregarFormulario" onSubmit={handleCity}>
+            <h1 className="AgregarTittle">Mostrar Ciudad</h1>
+            <form className="AgregarFormulario" >
             <label htmlFor="countries" className='AgregarFormularioInput'>Seleccione ciudad</label>
                 <select name="cityCode" id="cityCode" onChange={handleCityOnChange}>
                     {
@@ -74,7 +56,6 @@ const ActualizarCity = () => {
                 <input type="text" name="district" id="district" className="district AgregarFormularioInput" placeholder="Distrito"></input>
                 <label htmlFor="active" className='AgregarFormularioInput'> Activo</label>
                 <input type='checkbox' name="active" id="active" className="active AgregarFormularioInput" placeholder="active"></input>
-                <button className="AgregarFormularioBtn" type="submit" name="city">Actualizar</button>
             </form>
         </div>
     )

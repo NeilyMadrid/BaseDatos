@@ -23,7 +23,7 @@ const postCountryLanguageApi = (url,language, isofficial, porcentaje, alfabeto, 
         "porcentaje": porcentaje,
         "alfabeto": alfabeto,
         "numeroHablantes": numeroHablantes,
-        "countries": countries,
+        "codigoPais": countries,
         "activoPais": activo
     }
     console.log('Objeto: ',data);

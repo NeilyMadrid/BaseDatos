@@ -46,7 +46,7 @@ const getActualizarCountry = (url,id,codigoPais, nombrePais, continente, region,
         "fronteras": fronteras,
         "activoPais": activo
     }
-    console.log('Objeto: ',data);
+    console.log('salida Objeto: ',data);
     axios.put(urlUpdate, data)
     .then(response => {
         console.log('post success');
