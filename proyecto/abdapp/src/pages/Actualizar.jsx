@@ -1,9 +1,16 @@
 import React from 'react'
-import ActualizarTrabajo from '../components/ActualizarTrabajo'
+
+import ActualizarCountry from '../components/ActualizarCountry'
+import ActualizarCity from '../components/ActualizarCity'
 
 const Actualizar = () => {
   return (
-    <ActualizarTrabajo></ActualizarTrabajo>
+    <div className='main-actualizar'>
+
+    <ActualizarCountry></ActualizarCountry>
+    <ActualizarCity></ActualizarCity>
+    
+    </div>
   )
 }
 
